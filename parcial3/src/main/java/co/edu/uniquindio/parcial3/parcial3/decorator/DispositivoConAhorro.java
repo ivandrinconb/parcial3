@@ -1,4 +1,6 @@
-package co.edu.uniquindio.parcial3.parcial3.factory;
+package co.edu.uniquindio.parcial3.parcial3.decorator;
+
+import co.edu.uniquindio.parcial3.parcial3.factory.DispositivoInteligente;
 
 public class DispositivoConAhorro extends DispositivoDecorador {
 
@@ -8,8 +10,8 @@ public class DispositivoConAhorro extends DispositivoDecorador {
 
     @Override
     public void encender() {
-        super.encender(); // Enciende el dispositivo normal
-        activarModoAhorro(); // Añade la nueva funcionalidad del decorador
+        super.encender();
+        activarModoAhorro();
     }
 
     private void activarModoAhorro() {

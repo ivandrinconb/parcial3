@@ -48,5 +48,22 @@ public class Main {
         // Cambiamos dinámicamente a la estrategia Confort en tiempo de ejecución
         termostato.setStrategy(new co.edu.uniquindio.parcial3.parcial3.strategy.ConfortStartegy());
         System.out.println("Estado cambiado a Confort: " + termostato.getDescripcionEstado());
+
+        // === PRUEBA DE PATRÓN STATE CON LA CERRADURA ===
+        System.out.println("\n=== PRUEBA DE PATRÓN STATE (CERRADURA) ===");
+
+        Cerradura cerradura = new Cerradura("Cerradura Principal", "1234", 2);
+
+        System.out.println("Estado inicial: " + cerradura.getDescripcionEstado());
+
+        // Intentamos desbloquear con PIN incorrecto (intento 1)
+        cerradura.desbloquear("9999");
+
+        // Intentamos con otro PIN incorrecto (intento 2 - activa bloqueo temporal)
+        cerradura.desbloquear("0000");
+
+        // Probamos con el PIN correcto
+        cerradura.desbloquear("1234");
+        System.out.println("Estado final: " + cerradura.getDescripcionEstado());
     }
 }

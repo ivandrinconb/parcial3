@@ -1,4 +1,6 @@
-package co.edu.uniquindio.parcial3.parcial3.factory;
+package co.edu.uniquindio.parcial3.parcial3.decorator;
+
+import co.edu.uniquindio.parcial3.parcial3.factory.DispositivoInteligente;
 
 public abstract class DispositivoDecorador implements DispositivoInteligente {
     protected DispositivoInteligente dispositivoWrappeado;
