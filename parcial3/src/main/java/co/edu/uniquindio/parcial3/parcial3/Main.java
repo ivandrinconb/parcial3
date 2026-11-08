@@ -23,7 +23,7 @@ public class Main {
         luz.agregarObserver(new co.edu.uniquindio.parcial3.parcial3.observer.DispositivoObserver() {
             @Override
             public void actualizar(co.edu.uniquindio.parcial3.parcial3.observer.EventoDispositivo evento) {
-                System.out.println("[EVENTO OBSERVADO]: " + evento.getMensaje()); // O el método que tenga EventoDispositivo para obtener el texto
+                System.out.println("[EVENTO OBSERVADO]: " + evento.getMensaje());
             }
         });
 
@@ -31,6 +31,39 @@ public class Main {
         luz.encender();
         luz.setBrillo(50);
 
-        System.out.println("=== ¡INTEGRACIÓN EXITOSA AL 100%! ===");
+        // 6. Probamos el Patrón Strategy con el Termostato creando la instancia con sus parámetros completos
+        System.out.println("\n=== PRUEBA DE PATRÓN STRATEGY ===");
+
+        // Creamos una estrategia inicial por defecto (ej. EcoStrategy)
+        co.edu.uniquindio.parcial3.parcial3.strategy.TermostatoStrategy estrategiaInicial =
+                new co.edu.uniquindio.parcial3.parcial3.strategy.EcoStrategy(20.0);
+
+        // Instanciamos el termostato pasando nombre, temp actual, temp preferida y la estrategia
+        Termostato termostato = new Termostato("Termostato Pasillo", 22.0, 24.0, estrategiaInicial);
+
+        // Probamos encenderlo y ver su estado
+        termostato.encender();
+        System.out.println("Estado inicial con Eco: " + termostato.getDescripcionEstado());
+
+        // Cambiamos dinámicamente a la estrategia Confort en tiempo de ejecución
+        termostato.setStrategy(new co.edu.uniquindio.parcial3.parcial3.strategy.ConfortStartegy());
+        System.out.println("Estado cambiado a Confort: " + termostato.getDescripcionEstado());
+
+        // === PRUEBA DE PATRÓN STATE CON LA CERRADURA ===
+        System.out.println("\n=== PRUEBA DE PATRÓN STATE (CERRADURA) ===");
+
+        Cerradura cerradura = new Cerradura("Cerradura Principal", "1234", 2);
+
+        System.out.println("Estado inicial: " + cerradura.getDescripcionEstado());
+
+        // Intentamos desbloquear con PIN incorrecto (intento 1)
+        cerradura.desbloquear("9999");
+
+        // Intentamos con otro PIN incorrecto (intento 2 - activa bloqueo temporal)
+        cerradura.desbloquear("0000");
+
+        // Probamos con el PIN correcto
+        cerradura.desbloquear("1234");
+        System.out.println("Estado final: " + cerradura.getDescripcionEstado());
     }
 }
