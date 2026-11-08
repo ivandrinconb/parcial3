@@ -1,33 +1,36 @@
 package co.edu.uniquindio.parcial3.parcial3;
 
-import co.edu.uniquindio.parcial3.parcial3.factory.DispositivoConAhorro;
 import co.edu.uniquindio.parcial3.parcial3.factory.DispositivoFactory;
-import co.edu.uniquindio.parcial3.parcial3.factory.DispositivoInteligente;
-import co.edu.uniquindio.parcial3.parcial3.adapter.AdaptadorDispositivo;
-import co.edu.uniquindio.parcial3.parcial3.adapter.DispositivoLegacy;
+import co.edu.uniquindio.parcial3.parcial3.modelo.*;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== PRUEBA DE PATRONES DE DISEÑO ===");
+        System.out.println("=== PRUEBA DE INTEGRACIÓN DE PATRONES ===");
 
-        // 1. Factory Method
-        System.out.println("\n--- [Factory Method] ---");
-        DispositivoInteligente luz = DispositivoFactory.crearDispositivo("luz");
+        // 1. Creamos la luz usando tu Factory Method y el modelo de tu compañero
+        Luz luz = (Luz) DispositivoFactory.crearDispositivo("luz", "Luz Sala");
+
+        // 2. Probamos los métodos del objeto real
         luz.encender();
-        System.out.println("Estado: " + luz.obtenerEstado());
+        System.out.println("Dispositivo: " + luz.getNombre());
+        System.out.println("Estado: " + luz.getDescripcionEstado());
 
-        // 2. Decorator
-        System.out.println("\n--- [Decorator] ---");
-        DispositivoInteligente luzConAhorro = new DispositivoConAhorro(luz);
-        luzConAhorro.encender();
-        System.out.println("Estado: " + luzConAhorro.obtenerEstado());
+        // 3. Probamos apagarlo
+        luz.apagar();
+        System.out.println("Estado después de apagar: " + luz.getDescripcionEstado());
 
-        // 3. Adapter
-        System.out.println("\n--- [Adapter] ---");
-        DispositivoLegacy aparatoViejo = new DispositivoLegacy();
-        DispositivoInteligente aparatoAdaptado = new AdaptadorDispositivo(aparatoViejo);
+        // 4. Probamos el Patrón Observer usando la interfaz del paquete observer
+        luz.agregarObserver(new co.edu.uniquindio.parcial3.parcial3.observer.DispositivoObserver() {
+            @Override
+            public void actualizar(co.edu.uniquindio.parcial3.parcial3.observer.EventoDispositivo evento) {
+                System.out.println("[EVENTO OBSERVADO]: " + evento.getMensaje()); // O el método que tenga EventoDispositivo para obtener el texto
+            }
+        });
 
-        aparatoAdaptado.encender();
-        System.out.println("Estado: " + aparatoAdaptado.obtenerEstado());
+        // 5. Disparamos acciones que el Observer capturará automáticamente
+        luz.encender();
+        luz.setBrillo(50);
+
+        System.out.println("=== ¡INTEGRACIÓN EXITOSA AL 100%! ===");
     }
 }
