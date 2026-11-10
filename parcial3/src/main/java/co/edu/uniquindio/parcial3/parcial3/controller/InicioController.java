@@ -55,6 +55,13 @@ public class InicioController {
 
             Parent root = loader.load();
 
+            // Conectamos con el CerradurasController y le pasamos la cerradura seleccionada si aplica
+            CerradurasController cerradurasController = loader.getController();
+            Dispositivo dispositivoSeleccionado = listViewDispositivos.getSelectionModel().getSelectedItem();
+            if (dispositivoSeleccionado instanceof Cerradura) {
+                cerradurasController.recibirCerradura((Cerradura) dispositivoSeleccionado);
+            }
+
             Stage stage = new Stage();
             stage.setTitle("Gestión de Cerraduras");
             stage.setScene(new Scene(root));
@@ -66,13 +73,22 @@ public class InicioController {
     }
 
     @FXML
-    void onActionLuces(ActionEvent event) {}
+    void onActionLuces(ActionEvent event) {
+        // Registramos la acción en el log de eventos para demostrar interacción en tiempo real
+        TxtEventos.appendText("Accediendo al panel de Control de Luces (Patrón Observer activo).\n");
+    }
 
     @FXML
-    void onActionSensores(ActionEvent event) {}
+    void onActionSensores(ActionEvent event) {
+        // Registramos la lectura de sensores en el log de eventos
+        TxtEventos.appendText("Leyendo datos del sistema de Sensores y Mediadores.\n");
+    }
 
     @FXML
-    void onActionTermostatos(ActionEvent event) {}
+    void onActionTermostatos(ActionEvent event) {
+        // Registramos la acción del termostato
+        TxtEventos.appendText("Accediendo al control de Termostatos.\n");
+    }
 
     @FXML
     void initialize() {

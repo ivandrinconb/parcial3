@@ -63,6 +63,18 @@ public class CerradurasController {
     @FXML
     private TextArea txtHistorial;
 
+    /**
+     * Método para recibir la cerradura seleccionada desde el InicioController
+     */
+    public void recibirCerradura(Cerradura cerradura) {
+        if (cerradura != null) {
+            this.cerraduraSeleccionada = cerradura;
+            // Opcional: si quieres seleccionarla automáticamente en la lista de la ventana
+            listViewCerraduras.getSelectionModel().select(cerradura);
+            actualizarInformacion();
+        }
+    }
+
     @FXML
     void onActionBloquear(ActionEvent event) {
         if (cerraduraSeleccionada == null) {
