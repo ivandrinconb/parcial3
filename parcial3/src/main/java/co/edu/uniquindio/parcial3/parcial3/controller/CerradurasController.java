@@ -79,7 +79,6 @@ public class CerradurasController {
         actualizarInformacion();
 
         actualizarHistorial();
-
     }
 
     @FXML
@@ -103,7 +102,6 @@ public class CerradurasController {
         actualizarHistorial();
 
         txtPin.clear();
-
     }
 
     @FXML
@@ -113,7 +111,6 @@ public class CerradurasController {
         actualizarInformacion();
 
         actualizarHistorial();
-
     }
 
     @FXML
@@ -123,7 +120,6 @@ public class CerradurasController {
         actualizarInformacion();
 
         actualizarHistorial();
-
     }
 
     @FXML
@@ -142,7 +138,6 @@ public class CerradurasController {
         actualizarInformacion();
 
         actualizarHistorial();
-
     }
 
     @FXML
@@ -151,7 +146,7 @@ public class CerradurasController {
         historial = new CommandHistorial();
         txtHistorial.setEditable(false);
 
-        // Crear cerraduras de prueba
+        // Crear cerraduras de prueba por defecto
         Cerradura principal =
                 new Cerradura(
                         "Cerradura Principal",
@@ -172,38 +167,19 @@ public class CerradurasController {
                 garaje
         );
 
-        // Escuchar selección de cerraduras
+        // Escuchar selección de cerraduras en la interfaz
         listViewCerraduras.getSelectionModel()
                 .selectedItemProperty()
-                .addListener((obs, anterior, cerraduraSeleccionada) -> {
+                .addListener((obs, anterior, seleccionada) -> {
 
-                    if (cerraduraSeleccionada != null) {
-                        this.cerraduraSeleccionada = cerraduraSeleccionada;
-
-                        lblNombre.setText(
-                                cerraduraSeleccionada.getNombre()
-                        );
-
-                        lblEstado.setText(
-                                cerraduraSeleccionada.getDescripcionEstado()
-                        );
-
-                        lblIntentos.setText(
-                                String.valueOf(
-                                        cerraduraSeleccionada.getIntentosFallidos()
-                                )
-                        );
-
-                        lblMaxIntentos.setText(
-                                String.valueOf(
-                                        cerraduraSeleccionada.getMaxIntentos()
-                                )
-                        );
-
+                    if (seleccionada != null) {
+                        this.cerraduraSeleccionada = seleccionada;
+                        actualizarInformacion();
                     }
 
                 });
     }
+
     private void actualizarInformacion() {
 
         if (cerraduraSeleccionada == null) {
@@ -229,8 +205,8 @@ public class CerradurasController {
                         cerraduraSeleccionada.getMaxIntentos()
                 )
         );
-
     }
+
     private void actualizarHistorial() {
 
         txtHistorial.clear();
@@ -242,8 +218,6 @@ public class CerradurasController {
             );
 
         }
-
     }
-
 }
 
