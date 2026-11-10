@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="611.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.parcial3.parcial3.controller.InicioController">
    <children>
       <ListView fx:id="listViewHabitaciones" layoutX="29.0" layoutY="97.0" prefHeight="174.0" prefWidth="200.0" />
@@ -36,22 +35,22 @@
       </Text>
       <Separator layoutX="14.0" layoutY="315.0" prefHeight="3.0" prefWidth="758.0" />
       <TextArea fx:id="TxtEventos" layoutX="29.0" layoutY="371.0" prefHeight="200.0" prefWidth="729.0" />
-      <Button fx:id="btnLuces" layoutX="625.0" layoutY="106.0" mnemonicParsing="false" onAction="#onActionLuces" text="Luces">
+      <Button fx:id="btnLuces" layoutX="635.0" layoutY="108.0" mnemonicParsing="false" onAction="#onActionLuces" text="Luces">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnSensores" layoutX="625.0" layoutY="138.0" mnemonicParsing="false" onAction="#onActionSensores" text="Sensores">
+      <Button fx:id="btnSensores" layoutX="625.0" layoutY="151.0" mnemonicParsing="false" onAction="#onActionSensores" text="Sensores">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnCerraduras" layoutX="627.0" layoutY="173.0" mnemonicParsing="false" onAction="#onActionCerraduras" text="Cerraduras">
+      <Button fx:id="btnCerraduras" layoutX="620.0" layoutY="200.0" mnemonicParsing="false" onAction="#onActionCerraduras" text="Cerraduras">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnTermostatos" layoutX="625.0" layoutY="204.0" mnemonicParsing="false" onAction="#onActionTermostatos" text="Termostatos">
+      <Button fx:id="btnTermostatos" layoutX="618.0" layoutY="248.0" mnemonicParsing="false" onAction="#onActionTermostatos" text="Termostatos">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
