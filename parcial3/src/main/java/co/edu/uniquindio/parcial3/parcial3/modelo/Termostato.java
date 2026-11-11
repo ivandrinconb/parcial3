@@ -12,7 +12,7 @@ public class Termostato extends Dispositivo {
     private double temperaturaObjetivo;
     private TermostatoStrategy strategy;
 
-    // Todos los valores los ingresa el usuario en la pantalla
+    
     public Termostato(String nombre, double temperaturaActual,
                       double temperaturaPreferida, TermostatoStrategy strategy) {
         super(nombre, TipoDispositivo.TERMOSTATO);
